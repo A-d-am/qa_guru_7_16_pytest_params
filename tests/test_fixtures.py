@@ -1,9 +1,20 @@
 """
 Сделайте разные фикстуры для каждого теста, которые выставят размеры окна браузера
 """
+from qa_guru_7_16_pytest_params.application import app
 import pytest
 from selene import browser
-from qa_guru_7_16_pytest_params.application import app
+from selenium import webdriver
+
+
+@pytest.fixture()
+def open_browser():
+    browser.config.base_url = 'https://github.com'
+    driver_options = webdriver.ChromeOptions()
+    # driver_options.add_argument('--headless')
+    browser.config.driver_options = driver_options
+    yield
+    browser.quit()
 
 
 @pytest.fixture()
