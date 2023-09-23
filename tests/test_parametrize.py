@@ -11,7 +11,7 @@ from selenium import webdriver
 def setup_browser(request):
     browser.config.base_url = 'https://github.com'
     driver_options = webdriver.ChromeOptions()
-    # driver_options.add_argument('--headless')
+    driver_options.add_argument('--headless')
     browser.config.driver_options = driver_options
     browser.config.window_width = request.param[0]
     browser.config.window_height = request.param[1]
